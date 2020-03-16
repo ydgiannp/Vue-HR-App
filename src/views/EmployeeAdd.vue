@@ -1,0 +1,163 @@
+<template>
+  <div>
+
+    <!-- navbar -->
+
+    <nav class="navbar navbar-light bg-white rounded mb-3 shadow-sm">
+      <div class="form-inline">
+        <a class="navbar-brand" href="#">Add New Employee</a>
+      </div>
+      <!-- <form class="form-inline">
+        <button type="button" class="btn btn-info mr-2">Export CSV</button>
+        <button type="button" class="btn btn-info mr-2">Export CSV(All)</button>
+        <button type="button" class="btn btn-info mr-2">Import CSV</button>
+
+        <button type="button" class="btn btn-info ">Add New Employee</button>
+
+      </form> -->
+    </nav>
+
+    <div class="row">
+      <div class="col">
+
+				<form class="text-left bg-white p-3 rounded shadow-sm">
+
+					<div class="row">
+						<div class="col">
+
+							<div class="form-group">
+								<label for="exampleInputEmail1">Name</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+							</div>
+							
+							<div class="form-group">
+								<label for="exampleInputEmail1">Phone</label>
+								<input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+							</div>
+							
+							<div class="form-group">
+								<label for="exampleInputEmail1">Email address</label>
+								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							</div>
+							
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+								<label class="form-check-label" for="exampleRadios1">
+									Male
+								</label>
+							</div>
+							<div class="form-check mb-3">
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+								<label class="form-check-label" for="exampleRadios2">
+									Female
+								</label>
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputEmail1">Date of Birth</label>
+								<input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputEmail1">Birth Place</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+							</div>
+
+						</div>
+						<div class="col">
+							
+							<div class="form-group">
+								<label for="exampleInputEmail1">Name</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+							</div>
+							
+							<div class="form-group">
+								<label for="exampleInputEmail1">Phone</label>
+								<input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+							</div>
+							
+							<div class="form-group">
+								<label for="exampleInputEmail1">Email address</label>
+								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							</div>
+							
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+								<label class="form-check-label" for="exampleRadios1">
+									Male
+								</label>
+							</div>
+							<div class="form-check mb-3">
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+								<label class="form-check-label" for="exampleRadios2">
+									Female
+								</label>
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputEmail1">Date of Birth</label>
+								<input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+							</div>
+
+							<div class="form-group">
+								<label for="exampleInputEmail1">Birth Place</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+							</div>
+
+						</div>
+					</div>
+
+					
+
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+				
+			</div>
+    </div>
+  </div>
+</template>
+
+<script>
+// import employees_json from '@/json/employees-sample.json'
+// import employeeCard from '@/components/SingleEmployeeCard.vue'
+export default {
+  name: 'EmployeeAdd',
+  data() {
+    return {
+      // employees: employees_json
+    }
+  },
+  components: {
+    // 'employee-card': employeeCard
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+
+<style scoped lang="scss">
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
