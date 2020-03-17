@@ -14,7 +14,10 @@ import {
   faPhone,
   faEnvelope,
   faCheckSquare,
-  faTimesCircle
+  faTimesCircle,
+  faUserClock,
+  faCalendarAlt,
+  faUserAstronaut
 } from '@fortawesome/free-solid-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -28,7 +31,10 @@ library.add([
   faPhone,
   faEnvelope,
   faCheckSquare,
-  faTimesCircle
+  faTimesCircle,
+  faUserClock,
+  faCalendarAlt,
+  faUserAstronaut
 ])
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
