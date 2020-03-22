@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import sidebar from './components/Sidebar.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
+// import axios from 'axios'
 
 import { 
   faIdBadge,
@@ -42,6 +43,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 Vue.component('sidebar', sidebar);
+
 
 new Vue({
   router,

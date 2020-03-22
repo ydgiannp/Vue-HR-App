@@ -1,24 +1,24 @@
 <template>
-  <div>
+	<div>
 
-    <!-- navbar -->
+		<!-- navbar -->
 
-    <nav class="navbar navbar-light bg-white rounded mb-3 shadow-sm">
-      <div class="form-inline">
-        <a class="navbar-brand" href="#">Add New Employee</a>
-      </div>
-      <!-- <form class="form-inline">
-        <button type="button" class="btn btn-info mr-2">Export CSV</button>
-        <button type="button" class="btn btn-info mr-2">Export CSV(All)</button>
-        <button type="button" class="btn btn-info mr-2">Import CSV</button>
+		<nav class="navbar navbar-light bg-white rounded mb-3 shadow-sm">
+			<div class="form-inline">
+				<a class="navbar-brand" href="#">Add New Employee</a>
+			</div>
+			<!-- <form class="form-inline">
+				<button type="button" class="btn btn-info mr-2">Export CSV</button>
+				<button type="button" class="btn btn-info mr-2">Export CSV(All)</button>
+				<button type="button" class="btn btn-info mr-2">Import CSV</button>
 
-        <button type="button" class="btn btn-info ">Add New Employee</button>
+				<button type="button" class="btn btn-info ">Add New Employee</button>
 
-      </form> -->
-    </nav>
+			</form> -->
+		</nav>
 
-    <div class="row">
-      <div class="col">
+		<div class="row">
+			<div class="col">
 
 				<form class="text-left bg-white p-3 rounded shadow-sm">
 
@@ -27,30 +27,30 @@
 
 							<div class="form-group">
 								<label for="exampleInputEmail1">Name</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<input type="text" class="form-control" v-model="name">
 								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 							</div>
 							
 							<div class="form-group">
 								<label for="exampleInputEmail1">Phone</label>
-								<input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<input type="number" class="form-control" v-model="phone">
 								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 							</div>
 							
 							<div class="form-group">
 								<label for="exampleInputEmail1">Email address</label>
-								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<input type="email" class="form-control" v-model="email">
 								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 							</div>
 							
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+								<input class="form-check-input" type="radio" v-model="gender" value="M" checked>
 								<label class="form-check-label" for="exampleRadios1">
 									Male
 								</label>
 							</div>
 							<div class="form-check mb-3">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+								<input class="form-check-input" type="radio" v-model="gender" value="F">
 								<label class="form-check-label" for="exampleRadios2">
 									Female
 								</label>
@@ -58,60 +58,54 @@
 
 							<div class="form-group">
 								<label for="exampleInputEmail1">Date of Birth</label>
-								<input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<input type="date" class="form-control" v-model="birth_date">
 								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 							</div>
 
+														
 							<div class="form-group">
-								<label for="exampleInputEmail1">Birth Place</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<label for="exampleInputEmail1">Division</label>
+								<input type="text" class="form-control" v-model="division">
 								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 							</div>
-
 						</div>
 						<div class="col">
-							
+
+														
 							<div class="form-group">
-								<label for="exampleInputEmail1">Name</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<label for="exampleInputEmail1">Role</label>
+								<input type="number" class="form-control" v-model="role">
 								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 							</div>
 							
 							<div class="form-group">
-								<label for="exampleInputEmail1">Phone</label>
-								<input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-							</div>
-							
-							<div class="form-group">
-								<label for="exampleInputEmail1">Email address</label>
-								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-							</div>
-							
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-								<label class="form-check-label" for="exampleRadios1">
-									Male
-								</label>
-							</div>
-							<div class="form-check mb-3">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-								<label class="form-check-label" for="exampleRadios2">
-									Female
-								</label>
+								<label for="exampleInputEmail1">Status</label>
+								<select class="form-control" v-model="status">
+									<option disabled value="">Pilih salah satu</option>
+									<option>permanent</option>
+									<option>contract</option>
+									<option>probation</option>
+								</select>
 							</div>
 
 							<div class="form-group">
-								<label for="exampleInputEmail1">Date of Birth</label>
-								<input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<label for="exampleInputEmail1">Address</label>
+								<textarea class="form-control" v-model="address"></textarea>
 								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 							</div>
 
-							<div class="form-group">
-								<label for="exampleInputEmail1">Birth Place</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-								<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+							<div class="row no-gutter">
+								<div class="col-8">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Picture</label>
+										<input type="text" class="form-control" v-model="picture">
+										<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+									</div>
+								</div>
+
+								<div class="col-4">
+									<img v-bind:src="picture" v-if="picture" class="card-img add-employee-img" alt="...">
+								</div>
 							</div>
 
 						</div>
@@ -123,23 +117,32 @@
 				</form>
 				
 			</div>
-    </div>
-  </div>
+		</div>
+	</div>
 </template>
 
 <script>
 // import employees_json from '@/json/employees-sample.json'
 // import employeeCard from '@/components/SingleEmployeeCard.vue'
 export default {
-  name: 'EmployeeAdd',
-  data() {
-    return {
-      // employees: employees_json
-    }
-  },
-  components: {
-    // 'employee-card': employeeCard
-  }
+	name: 'EmployeeAdd',
+	data() {
+		return {
+		name: '',
+		phone: '',
+		email: '',
+		division: '',
+		role: '',
+		status: '',
+		picture: '',
+		gender: '',
+		birth_date: '',
+		address: '',
+		}
+	},
+	components: {
+		// 'employee-card': employeeCard
+	}
 }
 </script>
 
@@ -147,17 +150,26 @@ export default {
 
 <style scoped lang="scss">
 h3 {
-  margin: 40px 0 0;
+	margin: 40px 0 0;
 }
 ul {
-  list-style-type: none;
-  padding: 0;
+	list-style-type: none;
+	padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+	display: inline-block;
+	margin: 0 10px;
 }
 a {
-  color: #42b983;
+	color: #42b983;
 }
+
+.add-employee-img {
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  right: 0;
+  top: 0;
+}
+
 </style>

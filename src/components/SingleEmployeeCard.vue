@@ -5,18 +5,18 @@
         <div class="card-body text-left">
           <div class="row no-gutters">
             <div class="col-6">
-              <h5 class="card-title">Jamaludin</h5>
+              <h5 class="card-title">{{data.name}}</h5>
             </div>
             <div class="col-6">
-              <img src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" class="card-img profile-img" alt="...">
+              <img v-bind:src="data.picture" class="card-img profile-img" alt="...">
             </div>  
           </div>
           <div class="card-text">
-            Manager 
+            {{data.role}}
             <br> 
             <small> 
             <em> 
-                Research Development
+                {{data.division}}
             </em> 
             </small>
 
@@ -25,19 +25,21 @@
                 <small>
                   <div class="text-muted">
                     <font-awesome-icon icon="phone" />
-                    0812345
+                    {{data.phone}}
 
                     <br>
 
                     <font-awesome-icon icon="envelope" />
-                    email@email.com
+                    {{data.email}}
 
                   </div>
                 </small>
               </div>
               <div class="col-6 text-right">
                 <!-- <small> -->
-                  <span class="badge badge-pill badge-info">Probation</span>
+                  <span class="badge badge-pill badge-success" v-if="data.status == 'permanent'">{{data.status}}</span>
+                  <span class="badge badge-pill badge-info" v-else-if="data.status == 'contract'">{{data.status}}</span>
+                  <span class="badge badge-pill badge-dark" v-else>{{data.status}}</span>
                 <!-- </small> -->
               </div>
             </div>
@@ -53,7 +55,7 @@
 export default {
   name: 'EmployeeCard',
   props: {
-    msg: String
+    data: Object
   }
 }
 </script>

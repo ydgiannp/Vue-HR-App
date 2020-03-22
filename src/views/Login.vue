@@ -44,7 +44,10 @@ export default {
 			this.$store.dispatch('verifyUser', payload).then((response) => {
 				if(!response){
 					_self.isInvalid = true;
+				}else {
+
 				}
+
 			})
 		}
 	}

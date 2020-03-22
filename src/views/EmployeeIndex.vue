@@ -6,9 +6,8 @@
     <nav class="navbar navbar-light bg-white rounded mb-3 shadow-sm">
       <div class="form-inline">
         <a class="navbar-brand" href="#">Employee List</a>
-        <select id="inputState" class="form-control">
-          <option selected>Sort By</option>
-          <option>All</option>
+        <select id="inputState" class="form-control" v-model="filter">
+          <option selected>All</option>
           <option>Permanent</option>
           <option>Contract</option>
           <option>Probation</option>
@@ -26,7 +25,7 @@
 
       <div class="w-100">
         <div class="input-group my-2">
-          <input type="text" class="form-control" placeholder="Type to search" aria-label="Type to search" aria-describedby="button-addon2">
+          <input type="text" class="form-control" v-model="findKey" placeholder="Type to search" aria-label="Type to search" aria-describedby="button-addon2">
           <div class="input-group-append">
             <button class="btn btn-info" type="button" id="button-addon2">Search</button>
           </div>
@@ -36,8 +35,8 @@
 
     <div class="row no gutters">
 
-      <div class="col-4" v-for="n in 10" v-bind:key="n">
-        <employee-card></employee-card>
+      <div class="col-4" v-for="employee in employeesFilter" v-bind:key="employee.id">
+        <employee-card v-bind:data="employee"></employee-card>
       </div>
 
 
@@ -48,16 +47,45 @@
 <script>
 // import employees_json from '@/json/employees-sample.json'
 import employeeCard from '@/components/SingleEmployeeCard.vue'
+import _ from 'lodash';   
 export default {
   name: 'EmployeeIndex',
   data() {
     return {
-      // employees: employees_json
+      employees: {},
+      filter: 'All',
+      findKey: ''
     }
   },
   components: {
     'employee-card': employeeCard
+  },
+  mounted: function () {
+		// this.populateDashboard();
+		this.employees = this.$store.state.employees.employees;
+    console.log(this.employees);
+  },
+  computed: {
+    // a computed getter
+    employeesFilter: function () {
+      let _self = this;
+      // filter b sort by or find
+      var employeeFilterByFind = _.filter(this.employees, function(employee) { 
+          return employee.name.indexOf(_self.findKey) > -1; 
+      });
+
+      return _.filter(employeeFilterByFind, function(employee) { 
+          // this.findKey
+
+          // filter sort by
+          if (_self.filter.toLowerCase() != 'all'){
+            return employee.status == _self.filter.toLowerCase(); 
+          }
+          return employee; 
+      });
+    }
   }
+
 }
 </script>
 

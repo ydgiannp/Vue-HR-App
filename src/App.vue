@@ -52,7 +52,6 @@ export default {
   },
   methods:{
 		setLogin: function (value) {
-      console.log('haha');
 			this.logged_in = value
     },
     logOut: function() {
