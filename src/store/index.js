@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios';
+import _ from 'lodash';    
 
 Vue.use(Vuex)
 
@@ -11,20 +12,31 @@ const moduleEmployee = {
   mutations: {
     setEmployees (state,payload){
       state.employees = payload;
-      console.log(payload)
+    },
+    addEmployees (state,payload){
+      state.employees.unshift(payload);
+    },
+    updateEmployees (state,payload){
+      var index = _.findIndex(state.employees, {id: payload.id});
+      state.employees.splice(index, 1, payload);
     }
   },
   actions: {
     populateEmployees(state){
       axios
 				.get('http://localhost:3000/employees')
-        .then(response => 
-          (
-            state.commit('setEmployees',response.data)
-          )
-        )
+        .then((response) => {  
+          state.commit('setEmployees',response.data);
+        })
+      
     }
-  }// getters: { ... }
+  },
+  getters: {
+    getEmployees: state => state.employees,
+    getEmployee: (state) => (id) => {
+      return _.find(state.employees, function(o) { return o.id == id; });
+    }
+  }
 };
 
 

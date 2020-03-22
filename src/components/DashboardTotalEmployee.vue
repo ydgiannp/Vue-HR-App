@@ -4,7 +4,7 @@
 			<h4 class="card-title">Total Employees</h4>
 		</div>
 		<div class="card-body">
-			<div id="container"></div>
+			<div id="container" ></div>
 		</div>
 	</div>
 </template>
@@ -14,6 +14,8 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 
 import _ from 'lodash';    
+import { mapGetters } from 'vuex'
+
 export default {
 	name: 'DashboardTotalEmployee',
 	data() {
@@ -22,15 +24,28 @@ export default {
 			FData: 0,
 		}
 	},
+	computed: {
+		...mapGetters({
+      myEmployees: 'getEmployees'
+    })
+	},
+	watch: {
+		myEmployees() {
+				// is triggered whenever the store state changes
+			this.populateHighChart();
+		}
+	},
   methods: {
-    getMaleAndFemaleEmployees: function () {
+		getMaleAndFemaleEmployees: function () {
 			// filter berdasarkan Male dan Female
-			var employeesData = this.$store.state.employees.employees;
+			var employeesData = this.myEmployees;
 			var result = _.countBy(employeesData, function(employee){
 					return employee.gender;
 			});
 			this.MData = result.M;
 			this.FData = result.F;
+
+			return true;
 		},
 		populateHighChart: function(){
 			this.getMaleAndFemaleEmployees();
@@ -93,16 +108,8 @@ export default {
 		}
   },
   mounted: function () {
-		// this.populateDashboard();
-							// di sini tempat kalo berhasil login
-					
-		// mulai populate employees
-		let _self = this
-		this.$store.dispatch('populateEmployees').then((response) => {
-			console.log(response);
-			_self.populateHighChart();
-		})
-    
-  }
+		// let _self = this;
+		this.$store.dispatch('populateEmployees');
+	}
 }
 </script>
