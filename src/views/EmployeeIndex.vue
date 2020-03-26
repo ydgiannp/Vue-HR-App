@@ -63,7 +63,6 @@ export default {
   mounted: function () {
 		// this.populateDashboard();
 		this.employees = this.$store.state.employees.employees;
-    console.log(this.employees);
   },
   computed: {
     // a computed getter

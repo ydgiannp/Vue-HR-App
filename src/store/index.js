@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 const moduleEmployee = {
   state: {
-    employees: {}
+    employees: [],
   },
   mutations: {
     setEmployees (state,payload){
@@ -35,6 +35,43 @@ const moduleEmployee = {
     getEmployees: state => state.employees,
     getEmployee: (state) => (id) => {
       return _.find(state.employees, function(o) { return o.id == id; });
+    }
+  }
+};
+
+const moduleApplicant = {
+  state: {
+    applicants: []
+  },
+  mutations: {
+    setApplicants (state,payload){
+      state.applicants = payload;
+    },
+    addApplicants (state,payload){
+      state.applicants.unshift(payload);
+    },
+    updateApplicants (state,payload){
+      var index = _.findIndex(state.applicants, {id: payload.id});
+      state.applicants.splice(index, 1, payload);
+    }
+  },
+  actions: {
+    populateApplicants(state){
+      axios
+				.get('http://localhost:3000/applicants')
+        .then((response) => {  
+          state.commit('setApplicants',response.data);
+        })
+      
+    }
+  },
+  getters: {
+    getApplicants: state => state.applicants,
+    getApplicant: (state) => (id) => {
+      return _.find(state.applicants, function(o) { return o.id == id; });
+    },
+    getNewApplicants: (state) => {
+      return _.filter(state.applicants, {status: 'unprocessed'});
     }
   }
 };
@@ -73,6 +110,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    employees: moduleEmployee
+    employees: moduleEmployee,
+    applicants: moduleApplicant
   }
 })

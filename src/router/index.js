@@ -47,6 +47,18 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/ApplicantsIndex.vue')
   },
   {
+    // UserProfile will be rendered inside User's <router-view>
+    // when /user/:id/profile is matched
+    path: '/applicant/add',
+    name: 'ApplicantAdd',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ApplicantAdd.vue')
+  },
+  {
+    path: '/applicant/:id',
+    name: 'ApplicantDetail',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ApplicantDetail.vue')
+  },
+  {
     path: '/leave-request',
     name: 'LeaveRequest',
     // route level code-splitting
