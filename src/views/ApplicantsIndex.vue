@@ -48,7 +48,7 @@
 <script>
 // import employees_json from '@/json/employees-sample.json'
 import ApplicantCard from '@/components/SingleApplicantCard.vue'
-import axios from 'axios';
+// import axios from 'axios';
 import _ from 'lodash'; 
 
 export default {
@@ -64,14 +64,14 @@ export default {
     'applicant-card': ApplicantCard
   },
   mounted: function () {
-		let _self = this;
-      axios
-				.get('http://localhost:3000/applicants')
-        .then((response) => {  
-          _self.applicants = response.data;
+		// let _self = this;
+    //   axios
+		// 		.get('http://localhost:3000/applicant')
+    //     .then((response) => {  
+    //       _self.applicants = response.data;
           
-        })
-		// this.employees = this.$store.state.employees.employees;
+    //     })
+		this.applicants = this.$store.state.applicants.applicants;
   },
   computed: {
     // a computed getter

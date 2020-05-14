@@ -5,20 +5,19 @@
         <div class="card-body text-left">
           <div class="row no-gutters">
             <div class="col-6">
-              <h5 class="card-title">Jamaludin</h5>
+              <h5 class="card-title">{{data.employee.name}}</h5>
             </div>
             <div class="col-6">
-              <img src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" class="card-img profile-img" alt="...">
+              <img v-bind:src="data.employee.picture" class="card-img profile-img" alt="...">
             </div>  
           </div>
           <div class="card-text">
-              Manager 
+              {{data.employee.role}}
               <br> 
               <small> 
               <em> 
-                  Research Development
+                  {{data.employee.division}}
               </em> 
-              
               </small>
 
               <div class="row no-gutters mt-2">
@@ -26,12 +25,12 @@
                   <small>
                     <div class="text-muted">
                       <font-awesome-icon icon="phone" />
-                      0812345
+                      {{data.employee.phone}}
 
                       <br>
 
                       <font-awesome-icon icon="envelope" />
-                      email@email.com
+                      {{data.employee.email}}
 
                     </div>
                   </small>
@@ -39,10 +38,10 @@
                 <div class="col-6 text-right">
                   <small>
                     <div class="text-muted">
-                      Leave at 20 June
+                      Leave at {{new Date(data.date.date).toDateString()}}
                     </div>
                   </small>
-                  <span class="badge badge-pill badge-success">Success </span>
+                  <!-- <span class="badge badge-pill badge-success">Success </span> -->
                 </div>
               </div>
           </div>
@@ -60,7 +59,7 @@
 export default {
   name: 'LeaveRequestCard',
   props: {
-    msg: String
+    data: Object
   }
 }
 </script>

@@ -142,7 +142,7 @@ export default {
 			let _self = this;
 			axios({
 				method: 'post',
-				url: 'http://localhost:3000/applicants',
+				url: 'http://localhost:3000/applicant',
 				data: {
 					"name": _self.name,
 					"email": _self.email,

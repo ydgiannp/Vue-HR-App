@@ -11,27 +11,19 @@
     </nav>
 
     <div class="row">
-      <div class="col-2 pr-0">
-        <div class="card">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="height:74px;">Employee</li>
-            <li class="list-group-item" style="height:60px;" v-for="employee in employees" v-bind:key="employee.id">{{employee.name}}</li>
-            <!-- <li class="list-group-item">Vestibulum at eros</li> -->
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-10 pl-0">
+      <div class="col-12">
         <div style="overflow-x:auto;">
-          <table class="table bg-white rounded shadow-sm" style="width:2500px;">
+          <table class="table bg-white rounded shadow-sm" style="width:2000px;">
             <thead>
               <tr>
-                <th scope="col" v-for="date in dates" v-bind:key="date.id" style="width=200px;"> {{new Date(date.date).toDateString()}} </th>
+                <th>Employee</th>
+                <th scope="col" v-for="date in dates" v-bind:key="date.id"> {{new Date(date.date).toDateString()}} </th>
               </tr>
             </thead>
             <tbody>
               <tr  v-for="employee in employees" v-bind:key="employee.id">
-                <td scope="col" v-for="date in dates" v-bind:key="date.id" style="width=200px;"> 
+                <td>{{ employee.name }}</td>
+                <td scope="col" v-for="date in dates" v-bind:key="date.id"> 
                   <font-awesome-icon v-if="checkAttendance(date.id,employee.id)" icon="check-square" size="2x" class="text-success"/>
                   <font-awesome-icon v-else icon="times-circle" size="2x" class="text-danger"/>
                    </td>
@@ -78,10 +70,10 @@ export default {
 		fillAttendance: function () {
       let _self = this;
       axios
-				.get('http://localhost:3000/attendances?_sort=employeeId,dateId&_order=asc,asc')
+				.get('http://localhost:3000/attendace?_sort=employeeId,dateId&_order=asc,asc')
         .then((response) => {  
-          _self.attendances = response.data;
-          
+          // console.log(_.slice(_.rest(response.data), -10));
+          _self.attendances = response.data.slice(1).slice(-5) ;
         })
     },
     checkAttendance(dateId, employeeId) {
@@ -108,9 +100,9 @@ export default {
 
     let _self = this;
     axios
-				.get('http://localhost:3000/dates?attendance=true')
+				.get('http://localhost:3000/dates?attendace=true')
         .then((response) => {  
-          _self.dates = response.data;
+          _self.dates = response.data.slice(1).slice(-10);
           _self.fillAttendance();
         })
   },

@@ -32,12 +32,9 @@
     </nav>
 
     <div class="row no gutters">
-
-      <div class="col-4" v-for="n in 10" v-bind:key="n">
-        <leave-request-card></leave-request-card>
+      <div class="col-4" v-for="leave in leave_requests" v-bind:key="leave">
+        <leave-request-card v-bind:data="leave" v-if="leave.employee"></leave-request-card>
       </div>
-
-
     </div>
   </div>
 </template>
@@ -49,11 +46,16 @@ export default {
   name: 'LeaveRequestIndex',
   data() {
     return {
-      // employees: employees_json
+      leave_requests: []
     }
   },
   components: {
     'leave-request-card': leaveRequestCard
+  },
+  mounted: function() {
+    this.$store.dispatch('populateLeaveRequests');
+    this.leave_requests = this.$store.state.leaveRequests.leaveRequests;
+    console.log(this.leave_requests);
   }
 }
 </script>

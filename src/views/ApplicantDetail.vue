@@ -151,7 +151,7 @@ export default {
 			let _self = this;
 			axios({
 				method: 'patch',
-				url: 'http://localhost:3000/applicants/' + _self.applicant.id,
+				url: 'http://localhost:3000/applicant/' + _self.applicant.id,
 				data: {
 					"name": _self.applicant.name,
 					"email": _self.applicant.email,

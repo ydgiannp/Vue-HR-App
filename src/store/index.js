@@ -58,7 +58,7 @@ const moduleApplicant = {
   actions: {
     populateApplicants(state){
       axios
-				.get('http://localhost:3000/applicants')
+				.get('http://localhost:3000/applicant')
         .then((response) => {  
           state.commit('setApplicants',response.data);
         })
@@ -72,6 +72,43 @@ const moduleApplicant = {
     },
     getNewApplicants: (state) => {
       return _.filter(state.applicants, {status: 'unprocessed'});
+    }
+  }
+};
+
+const moduleLeaveRequest = {
+  state: {
+    leaveRequests: []
+  },
+  mutations: {
+    setLeaveRequests (state,payload){
+      state.leaveRequests = payload;
+    },
+    addLeaveRequests (state,payload){
+      state.leaveRequests.unshift(payload);
+    },
+    updateLeaveRequests (state,payload){
+      var index = _.findIndex(state.leaveRequests, {id: payload.id});
+      state.leaveRequests.splice(index, 1, payload);
+    }
+  },
+  actions: {
+    populateLeaveRequests(state){
+      axios
+				.get('http://localhost:3000/leave?_expand=employee&_expand=date')
+        .then((response) => {  
+          state.commit('setLeaveRequests',response.data);
+        })
+      
+    }
+  },
+  getters: {
+    getLeaveRequests: state => state.LeaveRequests,
+    getLeaveRequest: (state) => (id) => {
+      return _.find(state.LeaveRequests, function(o) { return o.id == id; });
+    },
+    getNewLeaveRequests: (state) => {
+      return _.filter(state.LeaveRequests, {status: 'unprocessed'});
     }
   }
 };
@@ -111,6 +148,7 @@ export default new Vuex.Store({
   },
   modules: {
     employees: moduleEmployee,
-    applicants: moduleApplicant
+    applicants: moduleApplicant,
+    leaveRequests: moduleLeaveRequest,
   }
 })
